@@ -5,92 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Roulette Coin (RLTC)</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+    body {
       font-family: 'Segoe UI', sans-serif;
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    }
+    header {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 20px;
       text-align: center;
-      flex-direction: column;
     }
-    .table-area {
-      background: rgba(0, 0, 0, 0.75);
-      padding: 40px;
-      border-radius: 20px;
-      max-width: 600px;
+    nav a {
+      color: #ffd700;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
     }
-    .logo {
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+    }
+    .hero img {
       width: 160px;
-      height: auto;
-      margin-bottom: 20px;
     }
-    h1 {
-      font-size: 2.5em;
-      margin: 0.5em 0;
+    .hero h1 {
+      font-size: 3em;
+      margin: 20px 0;
     }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 1.5em;
+    .hero p {
+      font-size: 1.3em;
+      max-width: 700px;
+      margin: auto;
     }
     .btn {
+      margin-top: 30px;
+      padding: 15px 30px;
       background-color: #28a745;
       border: none;
-      padding: 12px 24px;
-      font-size: 1em;
-      border-radius: 8px;
+      border-radius: 10px;
       color: white;
+      font-size: 1em;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
-      margin: 10px 5px;
     }
     .btn:hover {
       background-color: #218838;
     }
-    .countdown {
-      font-size: 1.8em;
-      margin-top: 20px;
-      color: #ffd700;
+    section {
+      padding: 60px 20px;
+      background: rgba(0, 0, 0, 0.75);
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.85);
+      color: #bbb;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-  <div class="table-area">
-    <img class="logo" src="logo.png" alt="RLTC Logo" />
+  <header>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#claim">Claim</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <img src="logo.png" alt="RLTC Logo">
     <h1>Roulette Coin (RLTC)</h1>
-    <p>Every time the roulette lands on 0, RLTC burns 0.03% of the supply. After 5M tokens are burned, it rises to 0.06% forever.</p>
-    <a href="https://raydium.io/swap/?inputMint=sol&outputMint=88rRpxPRswdzRDHvQUwwfhNZw4xA3r47TjUQrt6M8xib" class="btn">Buy on Raydium</a>
-    <a href="https://jup.ag/tokens/88rRpxPRswdzRDHvQUwwfhNZw4xA3r47TjUQrt6M8xib" class="btn">View on Jupiter</a>
-    <div class="countdown" id="countdown"></div>
+    <p>Every time the roulette lands on 0, RLTC burns 0.03% of the supply. After 5M tokens are burned, it rises to 0.06% forever. Step into the wheel of fortune.</p>
+    <a href="#claim" class="btn">🎰 Claim RLTC</a>
   </div>
 
-  <script>
-    const launchDate = new Date("May 24, 2025 19:00:00 GMT-0700").getTime();
-    const countdownEl = document.getElementById("countdown");
+  <section id="about">
+    <h2>About RLTC</h2>
+    <p>RLTC is a meme token with a real game twist. It's built around a roulette wheel that randomly triggers burns based on zero landings. It's transparent, on-chain, and pure degenerate fun with a casino soul.</p>
+  </section>
 
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = launchDate - now;
+  <section id="tokenomics">
+    <h2>Tokenomics</h2>
+    <ul>
+      <li>Total Supply: 1,000,000,000 RLTC</li>
+      <li>15% Reserved (Dev / Marketing)</li>
+      <li>85% Public (Liquidity / Trading)</li>
+      <li>Auto-Burn Rate: Starts at 0.03%, doubles after 5M tokens burned</li>
+    </ul>
+  </section>
 
-      if (distance <= 0) {
-        clearInterval(timer);
-        countdownEl.innerText = "🎉 RLTC is now live!";
-        return;
-      }
+  <section id="claim">
+    <h2>Claim Your Meme</h2>
+    <p>Connect your wallet to check eligibility and claim your slice of RLTC history.</p>
+    <a href="https://raydium.io/swap/?inputMint=sol&outputMint=88rRpxPRswdzRDHvQUwwfhNZw4xA3r47TjUQrt6M8xib" class="btn">Buy on Raydium</a>
+    <a href="https://jup.ag/tokens/88rRpxPRswdzRDHvQUwwfhNZw4xA3r47TjUQrt6M8xib" class="btn">View on Jupiter</a>
+  </section>
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownEl.innerText = `🚀 Launching in ${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }, 1000);
-  </script>
+  <footer>
+    &copy; 2025 RLTC • Not financial advice • Play responsibly 🎲
+  </footer>
 </body>
 </html>
