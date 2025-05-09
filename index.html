@@ -51,6 +51,11 @@
     .btn:hover {
       background-color: #218838;
     }
+    .countdown {
+      font-size: 1.8em;
+      margin-top: 20px;
+      color: #ffd700;
+    }
   </style>
 </head>
 <body>
@@ -59,6 +64,30 @@
     <h1>Roulette Coin (RLTC)</h1>
     <p>Every time the roulette lands on 0, RLTC burns 0.03% of the supply. After 5M tokens are burned, it rises to 0.06% forever.</p>
     <a href="https://raydium.io/swap" class="btn">Buy on Raydium</a>
+    <div class="countdown" id="countdown"></div>
   </div>
+
+  <script>
+    const launchDate = new Date("May 24, 2025 19:00:00 GMT-0700").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      if (distance <= 0) {
+        clearInterval(timer);
+        countdownEl.innerText = "🎉 RLTC is now live!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerText = `🚀 Launching in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
+  </script>
 </body>
 </html>
